@@ -128,6 +128,7 @@ $$
 There are gooses in National Chung Hsing University.
 
 Source image: 
+
 ![](test/nchu_goose.jpeg)
 
 Encrypted image:
@@ -135,4 +136,5 @@ Encrypted image:
 ![](result/goose_encrypted.png)
 
 Decrypted image:
+
 ![](result/goose_decrypted.png)
