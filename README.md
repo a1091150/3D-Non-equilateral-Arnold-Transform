@@ -113,12 +113,9 @@ $$
 $$
 where
 $$
-$$
-c_z = r_z * \frac{M}{gcd(N, M)},
-$$
 
 $$
-c_x = r_x * \frac{K}{gcd(M, K)}, c_y = \frac{N}{gcd(K, M)} \\ \space \\ c_z = \frac{M}{gcd(K, N)}
+c_x = r_x * \frac{K}{gcd(N, K)}, c_y = \frac{M}{gcd(K, M)} \\ \space \\ c_z = \frac{N}{gcd(M, N)}
 $$
 
 $$
