@@ -25,99 +25,103 @@ Different from the traditional algorithm that encrypts one plain image into one 
 
 1. Use OpenCV to read $S$ as RGB images. RGB images represent as `numpy ndarray` with shape `(M, N, 3)`, `M` is height, `N` is width and `3` is RGB channels.
 2. Apply the following formula in multiple times:
-$$
-    \{S_z\}:
-    \begin{bmatrix} 
-    x_z \\
-    y_z \\
-    z_z 
-    \end{bmatrix} 
-    = 
-    
-    \begin{bmatrix}
-    1 & b_z & 0 \\
-    c_z & 1 + b_zc_z & 0 \\
-    0 & 0 & 1
-    \end{bmatrix}
-
-    \begin{bmatrix}
-    x_n \\
-    y_n \\
-    z_n 
-    \end{bmatrix}
-    \space
-    mod
-    \space
-    \begin{matrix}
-    N \\
-    M \\
-    K
-    \end{matrix}
-$$
 
 $$
-    \{S_x\}:
-    \begin{bmatrix} 
-    x_x \\
-    y_x \\
-    z_x 
-    \end{bmatrix} 
-    = 
-    
-    \begin{bmatrix}
-    1 & 0 & 0 \\
-    0 & 1 & b_x \\
-    0 & c_x & 1 + b_xc_x
-    \end{bmatrix}
-
-    \begin{bmatrix}
-    x_z \\
-    y_z \\
-    z_z 
-    \end{bmatrix}
-    \space
-    mod
-    \space
-    \begin{matrix}
-    N \\
-    M \\
-    K
-    \end{matrix}
+\{S_z\}:
+\begin{bmatrix} 
+x_z \\
+y_z \\
+z_z 
+\end{bmatrix} 
+= \
+\begin{bmatrix}
+1 & b_z & 0 \\
+c_z & 1 + b_zc_z & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_n \\
+y_n \\
+z_n 
+\end{bmatrix}
+\space
+mod \
+\space
+\begin{matrix}
+N \\
+M \\
+K
+\end{matrix}
 $$
 
 $$
-    \{S_y\}:
-    \begin{bmatrix} 
-    x_{n + 1} \\
-    y_{n + 1} \\
-    z_{n + 1} 
-    \end{bmatrix} 
-    = 
-    
-    \begin{bmatrix}
-    1 + b_yc_y & 0 & c_y \\
-    0 & 1 & 0 \\
-    b_y & 0 & 1
-    \end{bmatrix}
-
-    \begin{bmatrix}
-    x_x \\
-    y_x \\
-    z_x 
-    \end{bmatrix}
-    \space
-    mod
-    \space
-    \begin{matrix}
-    N \\
-    M \\
-    K
-    \end{matrix}
+\{S_x\}:
+\begin{bmatrix} 
+x_x \\
+y_x \\
+z_x 
+\end{bmatrix} 
+= \
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & b_x \\
+0 & c_x & 1 + b_xc_x
+\end{bmatrix}
+\begin{bmatrix}
+x_z \\
+y_z \\
+z_z 
+\end{bmatrix}
+\space
+mod \
+\space
+\begin{matrix}
+N \\
+M \\
+K
+\end{matrix}
 $$
 
 $$
-where \\
-c_z = r_z * \frac{M}{gcd(N, M)},c_x = r_x * \frac{K}{gcd(M, K)}, c_y = \frac{N}{gcd(K, N)} \\ \space \\
+\{S_y\}:
+\begin{bmatrix} 
+x_{n + 1} \\
+y_{n + 1} \\
+z_{n + 1} 
+\end{bmatrix} 
+= \
+\begin{bmatrix}
+1 + b_yc_y & 0 & c_y \\
+0 & 1 & 0 \\
+b_y & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_x \\
+y_x \\
+z_x 
+\end{bmatrix}
+\space
+mod \
+\space
+\begin{matrix}
+N \\
+M \\
+K
+\end{matrix}
+$$
+
+$$
+where
+$$
+$$
+c_z = r_z * \frac{M}{gcd(N, M)},
+$$
+
+$$
+c_x = r_x * \frac{K}{gcd(M, K)}, c_y = \frac{N}{gcd(K, M)} \\ \space \\ c_z = \frac{M}{gcd(K, N)}
+$$
+
+$$
 gcd(.) = greatest \ common \ divisor, \\ b_x, b_y, b_z, r_x, r_y, r_z \in Z^+
 $$
 
